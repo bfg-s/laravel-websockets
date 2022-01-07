@@ -1,6 +1,6 @@
 ---
 title: Laravel Sail
-order: 5
+order: 4
 ---
 
 # Run in Laravel Sail
