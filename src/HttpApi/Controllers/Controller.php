@@ -1,10 +1,10 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\HttpApi\Controllers;
+namespace Bfg\LaravelWebSockets\HttpApi\Controllers;
 
-use BeyondCode\LaravelWebSockets\Apps\App;
-use BeyondCode\LaravelWebSockets\QueryParameters;
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager;
+use Bfg\LaravelWebSockets\Apps\App;
+use Bfg\LaravelWebSockets\QueryParameters;
+use Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManager;
 use Exception;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\ServerRequest;
@@ -30,7 +30,7 @@ abstract class Controller implements HttpServerInterface
     /** @var int */
     protected $contentLength;
 
-    /** @var \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager */
+    /** @var \Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManager */
     protected $channelManager;
 
     public function __construct(ChannelManager $channelManager)

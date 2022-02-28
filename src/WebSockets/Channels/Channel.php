@@ -1,9 +1,9 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\WebSockets\Channels;
+namespace Bfg\LaravelWebSockets\WebSockets\Channels;
 
-use BeyondCode\LaravelWebSockets\Dashboard\DashboardLogger;
-use BeyondCode\LaravelWebSockets\WebSockets\Exceptions\InvalidSignature;
+use Bfg\LaravelWebSockets\Dashboard\DashboardLogger;
+use Bfg\LaravelWebSockets\WebSockets\Exceptions\InvalidSignature;
 use Illuminate\Support\Str;
 use Ratchet\ConnectionInterface;
 use stdClass;

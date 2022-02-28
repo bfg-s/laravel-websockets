@@ -8,7 +8,7 @@ order: 2
 Laravel WebSockets can be installed via composer:
 
 ```bash
-composer require beyondcode/laravel-websockets
+composer require bfg/laravel-websockets
 ```
 
 The package will automatically register a service provider.
@@ -16,7 +16,7 @@ The package will automatically register a service provider.
 This package comes with a migration to store statistic information while running your WebSocket server. You can publish the migration file using:
 
 ```bash
-php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Bfg\LaravelWebSockets\WebSocketsServiceProvider" --tag="migrations"
 ```
 
 Run the migrations with:
@@ -28,7 +28,7 @@ php artisan migrate
 Next, you need to publish the WebSocket configuration file:
 
 ```bash
-php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Bfg\LaravelWebSockets\WebSocketsServiceProvider" --tag="config"
 ```
 
 This is the default content of the config file that will be published as  `config/websockets.php`:
@@ -73,7 +73,7 @@ return [
      * You can create a custom provider by implementing the
      * `AppProvider` interface.
      */
-    'app_provider' => BeyondCode\LaravelWebSockets\Apps\ConfigAppProvider::class,
+    'app_provider' => Bfg\LaravelWebSockets\Apps\ConfigAppProvider::class,
 
     /*
      * This array contains the hosts of which you want to allow incoming requests.
@@ -111,13 +111,13 @@ return [
          * The only requirement is that the model should extend
          * `WebSocketsStatisticsEntry` provided by this package.
          */
-        'model' => \BeyondCode\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry::class,
+        'model' => \Bfg\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry::class,
 
         /**
          * The Statistics Logger will, by default, handle the incoming statistics, store them
          * and then release them into the database on each interval defined below.
          */
-        'logger' => BeyondCode\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class,
+        'logger' => Bfg\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class,
 
         /*
          * Here you can specify the interval in seconds at which statistics should be logged.
@@ -169,6 +169,6 @@ return [
      * The only requirement is that the class should implement
      * `ChannelManager` interface provided by this package.
      */
-    'channel_manager' => \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager::class,
+    'channel_manager' => \Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager::class,
 ];
 ```

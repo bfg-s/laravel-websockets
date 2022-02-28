@@ -1,21 +1,21 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Statistics\Logger;
+namespace Bfg\LaravelWebSockets\Statistics\Logger;
 
-use BeyondCode\LaravelWebSockets\Apps\App;
-use BeyondCode\LaravelWebSockets\Statistics\Http\Controllers\WebSocketStatisticsEntriesController;
-use BeyondCode\LaravelWebSockets\Statistics\Statistic;
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager;
+use Bfg\LaravelWebSockets\Apps\App;
+use Bfg\LaravelWebSockets\Statistics\Http\Controllers\WebSocketStatisticsEntriesController;
+use Bfg\LaravelWebSockets\Statistics\Statistic;
+use Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManager;
 use function GuzzleHttp\Psr7\stream_for;
 use Ratchet\ConnectionInterface;
 use React\Http\Browser;
 
 class HttpStatisticsLogger implements StatisticsLogger
 {
-    /** @var \BeyondCode\LaravelWebSockets\Statistics\Statistic[] */
+    /** @var \Bfg\LaravelWebSockets\Statistics\Statistic[] */
     protected $statistics = [];
 
-    /** @var \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager */
+    /** @var \Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManager */
     protected $channelManager;
 
     /** @var \React\Http\Browser */

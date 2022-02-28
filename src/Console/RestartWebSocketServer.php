@@ -1,6 +1,6 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Console;
+namespace Bfg\LaravelWebSockets\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
@@ -16,7 +16,7 @@ class RestartWebSocketServer extends Command
 
     public function handle()
     {
-        Cache::forever('beyondcode:websockets:restart', $this->currentTime());
+        Cache::forever('bfg:websockets:restart', $this->currentTime());
 
         $this->info('Broadcasting WebSocket server restart signal.');
     }

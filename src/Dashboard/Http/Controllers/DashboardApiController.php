@@ -1,6 +1,6 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Dashboard\Http\Controllers;
+namespace Bfg\LaravelWebSockets\Dashboard\Http\Controllers;
 
 class DashboardApiController
 {

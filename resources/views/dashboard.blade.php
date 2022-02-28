@@ -211,14 +211,14 @@
             },
 
             subscribeToChannel(channel) {
-                this.pusher.subscribe('{{ \BeyondCode\LaravelWebSockets\Dashboard\DashboardLogger::LOG_CHANNEL_PREFIX }}' + channel)
+                this.pusher.subscribe('{{ \Bfg\LaravelWebSockets\Dashboard\DashboardLogger::LOG_CHANNEL_PREFIX }}' + channel)
                     .bind('log-message', (data) => {
                         this.logs.push(data);
                     });
             },
 
             subscribeToStatistics() {
-                this.pusher.subscribe('{{ \BeyondCode\LaravelWebSockets\Dashboard\DashboardLogger::LOG_CHANNEL_PREFIX }}statistics')
+                this.pusher.subscribe('{{ \Bfg\LaravelWebSockets\Dashboard\DashboardLogger::LOG_CHANNEL_PREFIX }}statistics')
                     .bind('statistics-updated', (data) => {
                             var update = {
                                 x:  [[data.time], [data.time], [data.time]],

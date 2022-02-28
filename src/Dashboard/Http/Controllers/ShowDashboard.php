@@ -1,8 +1,8 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Dashboard\Http\Controllers;
+namespace Bfg\LaravelWebSockets\Dashboard\Http\Controllers;
 
-use BeyondCode\LaravelWebSockets\Apps\AppProvider;
+use Bfg\LaravelWebSockets\Apps\AppProvider;
 use Illuminate\Http\Request;
 
 class ShowDashboard

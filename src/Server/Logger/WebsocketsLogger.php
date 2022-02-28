@@ -1,8 +1,8 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Server\Logger;
+namespace Bfg\LaravelWebSockets\Server\Logger;
 
-use BeyondCode\LaravelWebSockets\QueryParameters;
+use Bfg\LaravelWebSockets\QueryParameters;
 use Exception;
 use Ratchet\ConnectionInterface;
 use Ratchet\RFC6455\Messaging\MessageInterface;

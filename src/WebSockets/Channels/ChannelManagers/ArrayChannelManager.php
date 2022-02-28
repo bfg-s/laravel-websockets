@@ -1,11 +1,11 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers;
+namespace Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManagers;
 
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\Channel;
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager;
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\PresenceChannel;
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\PrivateChannel;
+use Bfg\LaravelWebSockets\WebSockets\Channels\Channel;
+use Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManager;
+use Bfg\LaravelWebSockets\WebSockets\Channels\PresenceChannel;
+use Bfg\LaravelWebSockets\WebSockets\Channels\PrivateChannel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Ratchet\ConnectionInterface;

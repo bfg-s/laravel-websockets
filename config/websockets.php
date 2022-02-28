@@ -1,6 +1,6 @@
 <?php
 
-use BeyondCode\LaravelWebSockets\Dashboard\Http\Middleware\Authorize;
+use Bfg\LaravelWebSockets\Dashboard\Http\Middleware\Authorize;
 
 return [
 
@@ -15,7 +15,7 @@ return [
      * This package comes with multi tenancy out of the box. Here you can
      * configure the different apps that can use the webSockets server.
      *
-     * Optionally you specify capacity so you can limit the maximum
+     * Optionally you specify capacity, so you can limit the maximum
      * concurrent connections for a specific app.
      *
      * Optionally you can disable client events so clients cannot send
@@ -29,8 +29,8 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'path' => env('PUSHER_APP_PATH'),
             'capacity' => null,
-            'enable_client_messages' => false,
-            'enable_statistics' => true,
+            'enable_client_messages' => true,
+            'enable_statistics' => false,
         ],
     ],
 
@@ -41,7 +41,7 @@ return [
      * You can create a custom provider by implementing the
      * `AppProvider` interface.
      */
-    'app_provider' => BeyondCode\LaravelWebSockets\Apps\ConfigAppProvider::class,
+    'app_provider' => Bfg\LaravelWebSockets\Apps\ConfigAppProvider::class,
 
     /*
      * This array contains the hosts of which you want to allow incoming requests.
@@ -54,7 +54,7 @@ return [
     /*
      * The maximum request size in kilobytes that is allowed for an incoming WebSocket request.
      */
-    'max_request_size_in_kb' => 250,
+    'max_request_size_in_kb' => 350,
 
     /*
      * This path will be used to register the necessary routes for the package.
@@ -64,7 +64,7 @@ return [
     /*
      * Dashboard Routes Middleware
      *
-     * These middleware will be assigned to every dashboard route, giving you
+     * This middleware will be assigned to every dashboard route, giving you
      * the chance to add your own middleware to this list or change any of
      * the existing middleware. Or, you can simply stick with this list.
      */
@@ -73,19 +73,33 @@ return [
         Authorize::class,
     ],
 
+    /**
+     * Pusher driver configurations, all configs merge in general configs.
+     * Edit driver settings only here.
+     */
+    'pusher' => [
+        'options' => [
+            //
+            'curl_options' => [
+                CURLOPT_SSL_VERIFYHOST => 0,
+                CURLOPT_SSL_VERIFYPEER => 0,
+            ]
+        ],
+    ],
+
     'statistics' => [
         /*
          * This model will be used to store the statistics of the WebSocketsServer.
          * The only requirement is that the model should extend
          * `WebSocketsStatisticsEntry` provided by this package.
          */
-        'model' => \BeyondCode\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry::class,
+        'model' => \Bfg\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry::class,
 
         /**
          * The Statistics Logger will, by default, handle the incoming statistics, store them
          * and then release them into the database on each interval defined below.
          */
-        'logger' => BeyondCode\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class,
+        'logger' => Bfg\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class,
 
         /*
          * Here you can specify the interval in seconds at which statistics should be logged.
@@ -128,6 +142,16 @@ return [
          * Passphrase for your local_cert file.
          */
         'passphrase' => env('LARAVEL_WEBSOCKETS_SSL_PASSPHRASE', null),
+
+        /**
+         * Require verification of SSL certificate used.
+         */
+        'verify_peer' => env('LARAVEL_WEBSOCKETS_SSL_VERIFY_PEER', false),
+
+        /**
+         * Require verification of peer name.
+         */
+        'verify_peer_name' => env('LARAVEL_WEBSOCKETS_SSL_VERIFY_PEER_NAME', false),
     ],
 
     /*
@@ -137,5 +161,5 @@ return [
      * The only requirement is that the class should implement
      * `ChannelManager` interface provided by this package.
      */
-    'channel_manager' => \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager::class,
+    'channel_manager' => \Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManagers\ArrayChannelManager::class,
 ];

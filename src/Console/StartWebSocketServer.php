@@ -1,16 +1,16 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Console;
+namespace Bfg\LaravelWebSockets\Console;
 
-use BeyondCode\LaravelWebSockets\Facades\StatisticsLogger;
-use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
-use BeyondCode\LaravelWebSockets\Server\Logger\ConnectionLogger;
-use BeyondCode\LaravelWebSockets\Server\Logger\HttpLogger;
-use BeyondCode\LaravelWebSockets\Server\Logger\WebsocketsLogger;
-use BeyondCode\LaravelWebSockets\Server\WebSocketServerFactory;
-use BeyondCode\LaravelWebSockets\Statistics\DnsResolver;
-use BeyondCode\LaravelWebSockets\Statistics\Logger\StatisticsLogger as StatisticsLoggerInterface;
-use BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager;
+use Bfg\LaravelWebSockets\Facades\StatisticsLogger;
+use Bfg\LaravelWebSockets\Facades\WebSocketsRouter;
+use Bfg\LaravelWebSockets\Server\Logger\ConnectionLogger;
+use Bfg\LaravelWebSockets\Server\Logger\HttpLogger;
+use Bfg\LaravelWebSockets\Server\Logger\WebsocketsLogger;
+use Bfg\LaravelWebSockets\Server\WebSocketServerFactory;
+use Bfg\LaravelWebSockets\Statistics\DnsResolver;
+use Bfg\LaravelWebSockets\Statistics\Logger\StatisticsLogger as StatisticsLoggerInterface;
+use Bfg\LaravelWebSockets\WebSockets\Channels\ChannelManager;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use React\Dns\Config\Config as DnsConfig;
@@ -41,6 +41,17 @@ class StartWebSocketServer extends Command
 
     public function handle()
     {
+        if (config('broadcasting.default') !== 'pusher') {
+
+            throw new \Exception(
+                <<<ERR
+For this extension, you must use the "Pusher" driver. Change your environment variable "BROADCAST_DRIVER" to "pusher".
+ERR
+            );
+        }
+
+        \Cache::set('ws-current-port', $this->option('port'));
+
         $this
             ->configureStatisticsLogger()
             ->configureHttpLogger()
@@ -66,7 +77,7 @@ class StartWebSocketServer extends Command
 
         app()->singleton(StatisticsLoggerInterface::class, function ($app) use ($browser) {
             $config = $app['config']['websockets'];
-            $class = $config['statistics']['logger'] ?? \BeyondCode\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class;
+            $class = $config['statistics']['logger'] ?? \Bfg\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class;
 
             return new $class(app(ChannelManager::class), $browser);
         });
@@ -173,6 +184,6 @@ class StartWebSocketServer extends Command
 
     protected function getLastRestart()
     {
-        return Cache::get('beyondcode:websockets:restart', 0);
+        return Cache::get('bfg:websockets:restart', 0);
     }
 }

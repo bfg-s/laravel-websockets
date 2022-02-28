@@ -1,9 +1,9 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Statistics\Events;
+namespace Bfg\LaravelWebSockets\Statistics\Events;
 
-use BeyondCode\LaravelWebSockets\Dashboard\DashboardLogger;
-use BeyondCode\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry;
+use Bfg\LaravelWebSockets\Dashboard\DashboardLogger;
+use Bfg\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
@@ -13,7 +13,7 @@ class StatisticsUpdated implements ShouldBroadcast
 {
     use SerializesModels;
 
-    /** @var \BeyondCode\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry */
+    /** @var \Bfg\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry */
     protected $webSocketsStatisticsEntry;
 
     public function __construct(WebSocketsStatisticsEntry $webSocketsStatisticsEntry)

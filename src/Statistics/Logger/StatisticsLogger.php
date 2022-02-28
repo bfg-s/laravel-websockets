@@ -1,6 +1,6 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Statistics\Logger;
+namespace Bfg\LaravelWebSockets\Statistics\Logger;
 
 use Ratchet\connectionInterface;
 

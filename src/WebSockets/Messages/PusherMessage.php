@@ -1,6 +1,6 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\WebSockets\Messages;
+namespace Bfg\LaravelWebSockets\WebSockets\Messages;
 
 interface PusherMessage
 {

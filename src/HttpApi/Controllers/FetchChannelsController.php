@@ -1,6 +1,6 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\HttpApi\Controllers;
+namespace Bfg\LaravelWebSockets\HttpApi\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;

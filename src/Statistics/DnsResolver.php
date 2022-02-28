@@ -1,6 +1,6 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Statistics;
+namespace Bfg\LaravelWebSockets\Statistics;
 
 use React\Dns\Resolver\ResolverInterface;
 use React\Promise\FulfilledPromise;

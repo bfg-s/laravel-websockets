@@ -1,8 +1,8 @@
 <?php
 
-namespace BeyondCode\LaravelWebSockets\Statistics\Http\Middleware;
+namespace Bfg\LaravelWebSockets\Statistics\Http\Middleware;
 
-use BeyondCode\LaravelWebSockets\Apps\App;
+use Bfg\LaravelWebSockets\Apps\App;
 
 class Authorize
 {
