@@ -75,12 +75,12 @@ ERR
 
         $browser = new Browser($this->loop, $connector);
 
-        app()->singleton(StatisticsLoggerInterface::class, function ($app) use ($browser) {
-            $config = $app['config']['websockets'];
-            $class = $config['statistics']['logger'] ?? \Bfg\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class;
-
-            return new $class(app(ChannelManager::class), $browser);
-        });
+//        app()->singleton(StatisticsLoggerInterface::class, function ($app) use ($browser) {
+//            $config = $app['config']['websockets'];
+//            $class = $config['statistics']['logger'] ?? \Bfg\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class;
+//
+//            return new $class(app(ChannelManager::class), $browser);
+//        });
 
         $this->loop->addPeriodicTimer(config('websockets.statistics.interval_in_seconds'), function () {
             StatisticsLogger::save();
