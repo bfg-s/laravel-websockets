@@ -83,7 +83,7 @@ ERR
 //        });
 
         $this->loop->addPeriodicTimer(config('websockets.statistics.interval_in_seconds'), function () {
-            StatisticsLogger::save();
+            //StatisticsLogger::save();
         });
 
         return $this;

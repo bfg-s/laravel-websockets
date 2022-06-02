@@ -41,7 +41,7 @@ class WebSocketHandler implements MessageComponentInterface
 
         $message->respond();
 
-        StatisticsLogger::webSocketMessage($connection);
+        //StatisticsLogger::webSocketMessage($connection);
     }
 
     public function onClose(ConnectionInterface $connection)
@@ -50,7 +50,7 @@ class WebSocketHandler implements MessageComponentInterface
 
         DashboardLogger::disconnection($connection);
 
-        StatisticsLogger::disconnection($connection);
+        //StatisticsLogger::disconnection($connection);
     }
 
     public function onError(ConnectionInterface $connection, Exception $exception)
@@ -108,7 +108,7 @@ class WebSocketHandler implements MessageComponentInterface
 
         DashboardLogger::connection($connection);
 
-        StatisticsLogger::connection($connection);
+        //StatisticsLogger::connection($connection);
 
         return $this;
     }
